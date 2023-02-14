@@ -44,14 +44,3 @@ export default class Car {
   getSeatQty() { return this.seatsQty; }
   setSeatQty(value: number) { this.seatsQty = value; }
 }
-
-// const object = {
-//   id: '6348513f34c397abcad040b2',
-//   model: 'Marea',
-//   year: 2002,
-//   color: 'azul',
-//   status: true,
-//   buyValue: 15.990,
-//   doorsQty: 4,
-//   seatsQty: 5,
-// };
