@@ -16,4 +16,17 @@ export default class CarServices {
     
     return this.createCarDomain(newCar);
   }
+
+  public async listAllCars(): Promise<(Car | null)[]> {
+    const carODM = new CarODM();
+    const carsDb = await carODM.find();
+    const carsDomain = carsDb.map((car) => this.createCarDomain(car));
+    return carsDomain;
+  }
+  public async carById(id: string): Promise<Car | null> {
+    const carODM = new CarODM();
+    const carById = await carODM.findById(id);
+    const carDomain = this.createCarDomain(carById);
+    return carDomain;
+  }
 }

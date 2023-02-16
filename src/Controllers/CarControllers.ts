@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import Icar from '../Interfaces/Car';
+import HttpHandler from '../Middlewares/HttpHandler';
 import CarServices from '../Services/CarServices';
 
 class CarController {
@@ -32,6 +33,23 @@ class CarController {
       return this.res.status(201).json(newCar);
     } catch (error) {
       this.next(error);
+    }
+  }
+
+  public async listAllCars() {
+    const allCars = await this.service.listAllCars();
+    return this.res.status(200).json(allCars);
+  }
+
+  public async listCarById() {
+    try {
+      const { id } = this.req.params;
+      const car = await this.service.carById(id);
+      if (!car) throw new HttpHandler(404, 'Car not found');
+
+      return this.res.status(200).json(car);
+    } catch (error) {
+      return this.next(error);
     }
   }
 }
