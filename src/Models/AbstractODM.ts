@@ -4,6 +4,7 @@ import {
   Schema,
   model,
   isValidObjectId,
+  UpdateQuery,
 } from 'mongoose';
 import HttpHandler from '../Middlewares/HttpHandler';
     
@@ -26,7 +27,18 @@ abstract class AbstractODM<T> {
   }
   public async findById(_id: string): Promise<T | null> {
     if (!isValidObjectId(_id)) throw new HttpHandler(422, 'Invalid mongo id');
-    return this.model.findById({ _id });
+    const find = this.model.findById({ _id });
+    return find;
+  }
+
+  public async update(_id: string, obj: Partial<T>): Promise<T | null> {
+    if (!isValidObjectId(_id)) throw new HttpHandler(422, 'Invalid mongo id');
+  
+    return this.model.findByIdAndUpdate(
+      { _id },
+      { ...obj } as UpdateQuery<T>,
+      { new: true },
+    );
   }
 }
     
