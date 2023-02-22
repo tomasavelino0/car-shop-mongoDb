@@ -1,46 +1,32 @@
-import Icar from '../Interfaces/Car';
+import ICar from '../Interfaces/Car';
+import Vehicle from './Vehicle';
 
-export default class Car {
-  protected id: string | undefined;
-  protected model: string;
-  protected year: number;
-  protected color: string;
-  protected status?: boolean;
-  protected buyValue: number;
+export default class Car extends Vehicle {
   private doorsQty: number;
   private seatsQty: number;
 
-  constructor(car: Icar) {
-    this.id = car.id;
-    this.model = car.model;
-    this.year = car.year;
-    this.color = car.color;
-    this.status = car.status || false;
-    this.buyValue = car.buyValue;
-    this.doorsQty = car.doorsQty;
-    this.seatsQty = car.seatsQty;
+  constructor({
+    model,
+    year,
+    color,
+    status,
+    buyValue,
+    doorsQty,
+    seatsQty,
+    id,
+  }: ICar) {
+    super({ model, year, color, status, buyValue, id });
+    this.doorsQty = doorsQty;
+    this.seatsQty = seatsQty;
   }
 
-  getId() { return this.id; }
+  setDoorsQty(doorsQty: number) {
+    this.doorsQty = doorsQty;
+  }
+  getDoorsQty() { return this.doorsQty; }
 
-  getModel() { return this.model; }
-  setModel(value: string) { this.model = value; }
-
-  getYear() { return this.year; }
-  setYear(value: number) { this.year = value; }
-
-  getColor() { return this.color; }
-  setColor(value: string) { this.color = value; }
-
-  getStatus() { return this.status; }
-  setStatus(value: boolean) { this.status = value; }
-
-  getBuyValue() { return this.buyValue; }
-  setBuyValue(value: number) { this.buyValue = value; }
-
-  getDoorQty() { return this.doorsQty; }
-  setDoorQty(value: number) { this.doorsQty = value; }
-
-  getSeatQty() { return this.seatsQty; }
-  setSeatQty(value: number) { this.seatsQty = value; }
+  setSeatsQty(seatsQty: number) {
+    this.seatsQty = seatsQty;
+  }
+  getSeatsQty() { return this.seatsQty; }
 }
