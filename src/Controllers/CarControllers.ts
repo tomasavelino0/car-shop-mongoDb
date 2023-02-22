@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import Icar from '../Interfaces/Car';
+import Icar from '../Interfaces/ICar';
 import HttpHandler from '../Middlewares/HttpHandler';
 import CarServices from '../Services/CarServices';
 

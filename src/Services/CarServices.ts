@@ -1,4 +1,4 @@
-import Icar from '../Interfaces/Car';
+import Icar from '../Interfaces/ICar';
 import Car from '../Domains/Car';
 import CarODM from '../Models/CarODM';
 
