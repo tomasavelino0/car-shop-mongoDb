@@ -15,4 +15,18 @@ export default class MotorcycleServices {
     
     return this.createCarDomain(newMotorCycle);
   }
+
+  public async listAllMotorcycles(): Promise<(Motorcycle | null)[]> {
+    const newMotorODM = new MotorCycleODM();
+    const motorCycles = await newMotorODM.find();
+    const motorCyclesDomain = motorCycles.map((motor) => this.createCarDomain(motor));
+    return motorCyclesDomain;
+  }
+
+  public async listMotorCycleById(id: string): Promise<Motorcycle | null> {
+    const newMotorODM = new MotorCycleODM();
+    const motorCycle = await newMotorODM.findById(id);
+    const motorCycleDomain = this.createCarDomain(motorCycle);
+    return motorCycleDomain;
+  }
 } 
