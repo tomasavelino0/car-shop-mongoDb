@@ -31,3 +31,24 @@ export const carListDbMock = [
     seatsQty: 5, 
   },
 ];
+
+export const updateCarWithoutId = {
+  model: 'Marea',
+  year: 2002,
+  color: 'White',
+  status: true,
+  buyValue: 12.000,
+  doorsQty: 4,
+  seatsQty: 5, 
+};
+
+export const updateCarMock = {
+  id: '6348513f34c397abcad040b2',
+  model: 'Marea',
+  year: 2002,
+  color: 'White',
+  status: true,
+  buyValue: 12.000,
+  doorsQty: 4,
+  seatsQty: 5,  
+};
